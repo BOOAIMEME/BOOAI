@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOOAI Airdrop Countdown</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #000000;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Background image layer */
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.2; /* make it subtle */
+      z-index: 0;
+      background: url('https://your-hosted-image-url.com/profile.jpg') no-repeat center center;
+      background-size: cover;
+      filter: blur(5px);
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      max-width: 90%;
+    }
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .timer {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+    }
+    .button {
+      margin-top: 2rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.25rem;
+      color: #fff;
+      background: #1bb9ff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .button:hover {
+      background: #0fa7d6;
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div>
+  <div class="content">
+    <h1>BOOAI Airdrop Begins In</h1>
+    <div class="timer" id="countdown">-- : -- : -- : --</div>
+    <a href="https://x.com/BOOAI_?t=THI8V0JNl8F6Kh6XDjDnSw&s=09" class="button" target="_blank">Visit Twitter</a>
+  </div>
+
+  <script>
+    // Set the target date/time (UTC)
+    const targetDate = new Date('2025-11-15T00:00:00Z'); 
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '🚀 Airdrop Started!';
+        clearInterval(intervalId);
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('countdown').innerHTML =
+        `${days.toString().padStart(2, '0')} : ` +
+        `${hours.toString().padStart(2, '0')} : ` +
+        `${minutes.toString().padStart(2, '0')} : ` +
+        `${seconds.toString().padStart(2, '0')}`;
+    }
+
+    const intervalId = setInterval(updateCountdown, 1000);
+    updateCountdown(); // initial call
+  </script>
+</body>
+</html>
